@@ -1,0 +1,67 @@
+import sys
+!{sys.executable} -m pip install --user bs4
+from bs4 import BeautifulSoup
+import pandas as pd
+import csv
+import requests
+url = "https://theconversation.com/towards-wakanda-chadwick-bosemans-passing-and-the-power-and-limits-of-afrofuturism-145300"
+
+_______________________________________________________________________________________________________________________________
+
+
+soup = BeautifulSoup(page.text , 'html.parser')
+#print(soup.prettify)
+#print (type(soup))
+
+text = (soup.get_text())
+#print (text)
+
+#paragraphs = soup.find_all('p')
+
+#print(soup.find(adjectives))
+
+#if soup in adjectives
+    #print ('yes')
+#else
+    #print ('no')
+    
+#print (filter(lambda x: adjectives in x, adjectives))
+
+
+_______________________________________________________________________________________________________________________________
+
+
+
+with open("/scratch/cloudstor/Adjectives.csv") as csv_file:
+    csv_reader=csv.reader(csv_file)
+    
+    next(csv_reader)
+    
+    for line in csv_reader:
+        adjectives0=(line[1])
+        
+        adjectives = adjectives0.split()
+    
+
+        #print (adjectives0)
+        #print (type(adjectives0))
+        
+        #print(soup.find(adjectives))
+
+        #import re
+        #findings = [m.start() for m in re.finditer(adjectives0, text)]
+        #print (findings)
+        
+        #for x in adjectives0
+            #','.join(adjectives0)
+            #print (adjectives0)
+        
+        def findall(adjectives0, text):
+            i = text.find(adjectives0)        
+            while i != -1:
+                yield i
+                i = text.find(adjectives0, i+1)
+                
+        x = text
+        findings = [(i, x[i:i+2]) for i in findall(adjectives0, text)]
+        print (findings)
