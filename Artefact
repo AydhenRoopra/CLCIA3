@@ -65,3 +65,15 @@ with open("/scratch/cloudstor/Adjectives.csv") as csv_file:
         x = text
         findings = [(i, x[i:i+2]) for i in findall(adjectives0, text)]
         print (findings)
+
+_____________________________________________________________
+
+#working small scale test
+
+consonants = "qwrtpsdfghjklzxcvbnm"
+word = "icecream"
+
+new_word = ""
+
+new_word = [l for l in word if l in consonants]
+print (new_word)
